@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-
 
 def export_to_csv(st, winning_nums):
     columns = ['회차', '추첨일', '1등', '1', '2', '3', '4', '5', '6', '보너스']
