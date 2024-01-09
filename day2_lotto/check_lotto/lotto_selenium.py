@@ -57,4 +57,5 @@ def get_winning_nums(st):
     data.insert(0, st)
     data.insert(1, extract_draw_date())
     data.insert(2, extract_prize_money())
+    driver.close()
     return data
