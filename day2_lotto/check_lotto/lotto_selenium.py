@@ -1,8 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from bs4 import BeautifulSoup
-from export import *
 
 
 def get_html():
@@ -39,7 +37,24 @@ def combine_winning_bonus():
     return result
 
 
+def extract_draw_date():
+    date_a = driver.find_element(By.CSS_SELECTOR, ".text._select_trigger._text")
+    date = date_a.text.replace(')', '(')
+    date = date.split('(')[1]
+    return date
+
+
+def extract_prize_money():
+    prize_p = driver.find_element(By.CLASS_NAME, "win_text")
+    prize_p_child = prize_p.find_element(By.CLASS_NAME, "emphasis")
+    return prize_p_child.text
+
+
 def get_winning_nums(st):
     get_html()
     search(st)
-    return combine_winning_bonus()
+    data = combine_winning_bonus()
+    data.insert(0, st)
+    data.insert(1, extract_draw_date())
+    data.insert(2, extract_prize_money())
+    return data
