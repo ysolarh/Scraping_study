@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def get_user_input():
-    return list(map(int, input().split()))
+    return list(map(int, input("내 번호 입력: ").split()))
 
 
 def find_ranking(count, is_bonus):

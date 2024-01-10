@@ -50,6 +50,10 @@ def extract_prize_money():
     return prize_p_child.text
 
 
+def display_winning_info(data):
+    print(f"{data[0]}회차 ({data[1]}) 1등 당첨금: {data[2]}원\n{', '.join(data[3:])}")
+
+
 def get_winning_nums(st):
     get_html()
     search(st)
@@ -58,4 +62,5 @@ def get_winning_nums(st):
     data.insert(1, extract_draw_date())
     data.insert(2, extract_prize_money())
     driver.close()
+    display_winning_info(data)
     return data
