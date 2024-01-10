@@ -37,24 +37,10 @@ def compare_nums(st):
     df_cut = df.iloc[:, 3:]
     include = list(df_cut.isin(user_input).itertuples())[0][1:] #
     for i in range(len(include)):
-        print("idx: ", i)
-        print("val:", df_cut.iloc[0, i], include[i])
         if include[i]:
-            print("inc")
             if i == 6:
-                print("!")
                 is_bonus = True
             count += 1
             matched_nums.append(df_cut.iloc[0, i])
-    # include = list(df.iloc[:, 3:].isin(user_input).itertuples()) #
-    # for i in range(len(include[0])):
-    #     print(i)
-    #     if include[0][i]:
-    #         print(df.iloc[:, 3:].iloc[0, i])
-    #         if i == 7:
-    #             print("!")
-    #             is_bonus = True
-    #         count += 1
-    #         matched_nums.append(df.iloc[0, i + 2])
     ranking = find_ranking(count, is_bonus)
     display_result(ranking, matched_nums)
